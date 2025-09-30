@@ -3,6 +3,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.tools import tool
 from langchain_core.messages import SystemMessage, HumanMessage
 from langgraph.prebuilt import create_react_agent
+from langgraph.graph import StateGraph, MessagesState
 from datetime import datetime
 import pytz
 
@@ -72,4 +73,4 @@ def run_agent(user_input: str) -> str:
 if __name__ == "__main__":
     # response = run_agent("12と7を掛け算して")
     response = run_agent("米国の現在時刻を教えて")
-    # print(response)
+    print(response)
