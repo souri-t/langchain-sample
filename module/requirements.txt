@@ -1,0 +1,9 @@
+# Python プロジェクト用のサンプル依存パッケージリスト
+# Web開発関連
+flask==3.0.0
+requests==2.31.0
+langgraph==0.5.3
+langchain_openai==0.3.28
+langchain_core==0.3.68
+openai
+pytz

@@ -1,0 +1,36 @@
+{
+    "name": "Python 3.13 Development",
+    "build": {
+        "dockerfile": "../Dockerfile"
+    },
+
+	// コンテナ離脱後コンテナの停止と削除を指定
+	"shutdownAction": "stopContainer",
+	"runArgs": ["--rm"],
+    
+    "mounts": [
+        "source=${localWorkspaceFolder}/module,target=/module,type=bind,consistency=cached"
+    ],
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder}/workspace,target=/workspace,type=bind,consistency=cached",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "charliermarsh.ruff",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    },
+    "remoteUser": "vscode",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "installOhMyZsh": true,
+            "upgradePackages": true,
+            "configureZshAsDefaultShell": true
+        }
+    },
+    "postCreateCommand": "cp /module/requirements.txt /tmp/requirements.txt && pip install --upgrade pip && pip install -r /tmp/requirements.txt"
+}
